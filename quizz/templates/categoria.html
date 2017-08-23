@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+  <div class="container">
+      <h2>Adicionar Categoria</h2>
+  </div>
+</div>
+<div class="container">
+    <form action="/categoria/" method="post" class="form-inline">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="cat">Categoria:</label>
+            <input type="text" class="form-control" placeholder="Nova Categoria" id="cat" name="cat">
+        </div>
+        <input type="submit" value="Adicionar" class="btn btn-default">
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="container">
+        <h2>Enviar Pergunta</h2>
+    </div>
+</div>
+<div class="container">
+    <form class="form-horizontal" action="/pergunta/" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="pergunta">Pergunta:</label>
+            <textarea name="pergunta" id="pergunta" cols="30" rows="3" class="form-control" placeholder="Pergunta"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="resposta">Resposta:</label>
+            <input type="text" class="form-control" id="resposta" name="resposta" placeholder="Resposta">
+        </div>
+        <div class="form-group">
+            <label for="alternativa">Resposta Alternativa:</label>
+            <input type="text" class="form-control" id="alternativa" name="alternativa" placeholder="Resposta Alternativa">
+        </div>
+        <div class="form-group">
+            <label for="categoria">Categoria:</label>
+            <select class="form-control col-sm-5" name="categoria">
+                {% for categoria in categorias %}
+                    <option value={{ categoria.pk }}>{{ categoria.nome }}</option>
+                {% endfor %}
+            </select>
+            <a href="/categoria" class="btn btn-primary btn-xs">Adicionar Categoria</a>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Enviar" class="btn btn-default">
+        </div>
+    </form>
+</div>
+{% endblock %}
