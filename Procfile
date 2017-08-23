@@ -1,1 +1,1 @@
-web: gunicorn mysite.wsgi
+web: gunicorn dcn_quizz.wsgi
