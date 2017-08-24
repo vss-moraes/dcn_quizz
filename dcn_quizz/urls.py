@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from quizz.views import get_pergunta, nova_categoria, novo_usuario, index, perfil
+from quizz.views import get_pergunta, nova_categoria, index, perfil
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -23,6 +23,5 @@ urlpatterns = [
     url(r'^pergunta/', get_pergunta),
     url(r'^categoria/', nova_categoria),
     url(r'^accounts/', include('django.contrib.auth.urls')),
-    url(r'^accounts/novo/', novo_usuario),
     url(r'^perfil/', perfil),
 ]
