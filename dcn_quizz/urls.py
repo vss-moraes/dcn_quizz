@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from quizz.views import get_pergunta, new_categoria
+from quizz.views import get_pergunta, nova_categoria, novo_usuario, index
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', index),
     url(r'^pergunta/', get_pergunta),
-    url(r'^categoria/', new_categoria),
+    url(r'^categoria/', nova_categoria),
     url(r'^cadastro/', include('django.contrib.auth.urls')),
+    url(r'^cadastro/novo/', novo_usuario),
 ]

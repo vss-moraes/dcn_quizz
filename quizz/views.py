@@ -9,7 +9,8 @@ def get_pergunta(request):
         nova_pergunta = request.POST.get("pergunta")
         nova_resposta = request.POST.get("resposta")
         nova_alternativa = request.POST.get("alternativa")
-        nova_categoria = Categoria.objects.get(pk=request.POST.get("categoria"))
+        nova_categoria = Categoria.objects.get(
+                         pk=request.POST.get("categoria"))
 
         p = Pergunta(descricao=nova_pergunta,
                      resposta=nova_resposta,
@@ -20,11 +21,10 @@ def get_pergunta(request):
         return HttpResponseRedirect('/pergunta/')
 
     categorias = Categoria.objects.all()
-
     return render(request, 'pergunta.html', {'categorias': categorias})
 
 
-def new_categoria(request):
+def nova_categoria(request):
     if request.method == 'POST':
         nome_cat = request.POST.get("cat")
         print(nome_cat)
@@ -35,3 +35,11 @@ def new_categoria(request):
             return HttpResponseRedirect('/pergunta/')
 
     return render(request, 'categoria.html')
+
+
+def novo_usuario(request):
+    pass
+
+
+def index(request):
+    return render(request, 'index.html')
