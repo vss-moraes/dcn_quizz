@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 
 from .models import Categoria, Pergunta
 
 
+@login_required()
 def get_pergunta(request):
     if request.method == 'POST':
         nova_pergunta = request.POST.get("pergunta")
@@ -13,11 +15,13 @@ def get_pergunta(request):
         nova_alternativa = request.POST.get("alternativa")
         nova_categoria = Categoria.objects.get(
                          pk=request.POST.get("categoria"))
+        usuario = request.user
 
         p = Pergunta(descricao=nova_pergunta,
                      resposta=nova_resposta,
                      alternativa=nova_alternativa,
-                     categoria=nova_categoria)
+                     categoria=nova_categoria,
+                     criador=usuario)
         p.save()
 
         return HttpResponseRedirect('/pergunta/')
@@ -26,13 +30,16 @@ def get_pergunta(request):
     return render(request, 'pergunta.html', {'categorias': categorias})
 
 
+@login_required()
 def nova_categoria(request):
     if request.method == 'POST':
         nome_cat = request.POST.get("cat")
+        usuario = request.user
         print(nome_cat)
         lista = [x.nome for x in Categoria.objects.all()]
         if nome_cat not in lista and nome_cat is not None:
-            cat = Categoria(nome=nome_cat)
+            cat = Categoria(nome=nome_cat,
+                            criador=usuario)
             cat.save()
             return HttpResponseRedirect('/pergunta/')
 

@@ -22,6 +22,6 @@ urlpatterns = [
     url(r'^$', index, name='pagina_inicial'),
     url(r'^pergunta/', get_pergunta),
     url(r'^categoria/', nova_categoria),
-    url(r'^cadastro/', include('django.contrib.auth.urls')),
-    url(r'^cadastro/novo/', novo_usuario),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'^accounts/novo/', novo_usuario),
 ]

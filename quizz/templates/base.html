@@ -38,7 +38,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">Quizz DCN</a>
+              <a class="navbar-brand" href="/">Quizz DCN</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -49,10 +49,10 @@
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
-                    <li><a href="/cadastro/logout">Sair</a></li>
+                    <li><a href="/accounts/logout">Sair</a></li>
                 {% else %}
-                    <li><a href="/cadastro/novo">Criar conta</a></li>
-                    <li><a href="/cadastro/login">Login</a></li>
+                    <li><a href="/accounts/novo">Criar conta</a></li>
+                    <li><a href="/accounts/login">Login</a></li>
                 {% endif %}
               </ul>
             </div><!-- /.navbar-collapse -->
