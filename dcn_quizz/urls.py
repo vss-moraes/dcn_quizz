@@ -19,7 +19,7 @@ from quizz.views import get_pergunta, nova_categoria, novo_usuario, index
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', index),
+    url(r'^$', index, name='pagina_inicial'),
     url(r'^pergunta/', get_pergunta),
     url(r'^categoria/', nova_categoria),
     url(r'^cadastro/', include('django.contrib.auth.urls')),

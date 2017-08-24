@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.contrib.auth.models import User
+from django.urls import reverse
 
 from .models import Categoria, Pergunta
 
@@ -38,7 +40,21 @@ def nova_categoria(request):
 
 
 def novo_usuario(request):
-    pass
+    if request.method == 'POST':
+        nome = request.POST.get("nome")
+        sobrenome = request.POST.get("sobrenome")
+        nome_usuario = request.POST.get("username")
+        e_mail = request.POST.get("email")
+        senha = request.POST.get("senha")
+        print(nome_usuario)
+        usuario = User.objects.create_user(username=nome_usuario,
+                                           email=e_mail,
+                                           password=senha,
+                                           first_name=nome,
+                                           last_name=sobrenome)
+        usuario.save()
+        return HttpResponseRedirect(reverse('pagina_inicial'))
+    return render(request, 'registration/novo_usuario.html')
 
 
 def index(request):

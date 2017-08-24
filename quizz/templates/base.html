@@ -48,8 +48,12 @@
                 <li><a href="/pergunta">Enviar Pergunta</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="/cadastro/novo">Criar conta</a></li>
-                <li><a href="/cadastro/login">Login</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="/cadastro/logout">Sair</a></li>
+                {% else %}
+                    <li><a href="/cadastro/novo">Criar conta</a></li>
+                    <li><a href="/cadastro/login">Login</a></li>
+                {% endif %}
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
