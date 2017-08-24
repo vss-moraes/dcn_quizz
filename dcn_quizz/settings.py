@@ -27,6 +27,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['dcnquizz.herokuapp.com']
 
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # Application definition
 
