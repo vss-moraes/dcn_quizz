@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from quizz.views import get_pergunta, new_categoria
 
@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^pergunta/', get_pergunta),
     url(r'^categoria/', new_categoria),
+    url(r'^cadastro/', include('django.contrib.auth.urls')),
 ]
