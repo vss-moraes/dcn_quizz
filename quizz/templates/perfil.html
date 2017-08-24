@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="jumbotron">
+        <div class="container">
+            <h2>Minhas perguntas</h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <table class="table">
+            <tr>
+                <th>Pergunta</th>
+                <th>Resposta</th>
+                <th>Resposta Alternativa</th>
+            </tr>
+            {% for pergunta in perguntas %}
+                <tr>
+                    <td>{{ pergunta.descricao }}</td>
+                    <td>{{ pergunta.resposta }}</td>
+                    <td>{{ pergunta.alternativa }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

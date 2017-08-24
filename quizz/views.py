@@ -64,5 +64,12 @@ def novo_usuario(request):
     return render(request, 'registration/novo_usuario.html')
 
 
+@login_required()
+def perfil(request):
+    perguntas = Pergunta.objects.filter(criador=request.user)
+
+    return render(request, 'perfil.html', {'perguntas': perguntas})
+
+
 def index(request):
     return render(request, 'index.html')
