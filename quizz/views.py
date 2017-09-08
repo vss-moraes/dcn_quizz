@@ -5,7 +5,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 
-from .models import Categoria, Pergunta
+from .models import Categoria, Pergunta, UsuarioResposta
 
 
 @login_required()
@@ -72,3 +72,16 @@ def mudar_senha(request):
 
 def index(request):
     return render(request, 'index.html')
+
+@login_required()
+def responder_perguntas(request):
+    if request.method == 'GET':
+        categorias = Categoria.objects.all()
+        respondidas = UsuarioResposta.objects.values_list('pergunta_id', flat=True).filter(usuario_id=request.user.id)
+        perguntas = Pergunta.objects.filter(categoria_id=request.GET.get('categoria'))
+        perguntas = perguntas.exclude(pk__in=set(respondidas))
+
+    return render(request, 'responder.html', {
+        'categorias': categorias,
+        'perguntas': perguntas
+    })

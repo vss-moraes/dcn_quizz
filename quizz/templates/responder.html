@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="jumbotron">
+    <div class="container">
+      <h2>Responder</h2>
+    </div>
+  </div>
+  <div class="container">
+    <form action="/responder" class="form-inline">
+      <div class="form-group">
+        <label for="categoria">Categoria:</label>
+        <select class="form-control" name="categoria" required>
+            <option value="">Selecione</option>
+          {% for categoria in categorias %}
+            <option value={{ categoria.pk }}>{{ categoria.nome }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <button type="submit" class="btn btn-default">Selecionar</button>
+    </form>
+
+    {% for pergunta in perguntas %}
+      <p> {{ pergunta.descricao }} </p>
+    {% endfor %}
+  </div>
+{% endblock %}

@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^pergunta/', views.get_pergunta),
     url(r'^categoria/', views.nova_categoria),
     url(r'^perfil/', views.perfil),
+    url(r'^responder/', views.responder_perguntas),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^accounts/editar/$', views.mudar_senha, name='change_password'),
 ]
