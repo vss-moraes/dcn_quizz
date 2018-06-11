@@ -28,7 +28,7 @@
           <option value={{ categoria.pk }}>{{ categoria.nome }}</option>
         {% endfor %}
       </select>
-      <a href="/categoria" class="btn btn-primary btn-xs">Adicionar Categoria</a>
+      <a onclick="cacheData()" class="btn btn-primary btn-xs">Adicionar Categoria</a>
     </div>
     <div class="form-group">
       <input type="submit" value="Enviar" class="btn btn-default">
